@@ -14,10 +14,10 @@ sample_board = [
   '..5..983.'
 ].map { |row| row.split('') }
 
-game = Sudoku.new(sample_board)
-puts "\nOriginal game"
-puts game
+sudoku = Sudoku.new(sample_board)
+puts "\nOriginal board"
+puts sudoku
 
-Solver.new(game).solve
+Solver.new(sudoku).solve
 puts "\nSolution:"
-puts game
+puts sudoku
