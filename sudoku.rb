@@ -14,20 +14,20 @@ class Sudoku
     matrix.map { |row| row[y] }
   end
 
-  def at(x,y)
+  def at((x,y))
     matrix[y][x]
   end
 
-  def empty?(x,y)
-    at(x,y) == BLANK
+  def empty?(cell)
+    at(cell) == BLANK
   end
 
-  def write(n, x, y)
+  def write(n, (x, y))
     matrix[y][x] = n
   end
 
-  def erase(x,y)
-    write(BLANK, x, y)
+  def erase(cell)
+    write(BLANK, cell)
   end
 
   def subgrid_neighbors(x,y)
@@ -39,7 +39,7 @@ class Sudoku
   def unknowns
     indexes = (0..8).to_a
     indexes.product(indexes)
-           .select { |cell| empty? *cell }
+           .select { |cell| empty? cell }
   end
 
   def to_s

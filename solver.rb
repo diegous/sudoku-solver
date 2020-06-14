@@ -11,7 +11,7 @@ class Solver
 
   private
 
-    def candidates(x, y)
+    def candidates((x, y))
       ('1'..'9').to_a -
         @game.row(y) -
         @game.column(x) -
@@ -23,10 +23,10 @@ class Solver
 
       cell, *rest = *unknowns
 
-      candidates(*cell).each do |n|
-        @game.write(n, *cell)
+      candidates(cell).each do |n|
+        @game.write(n, cell)
         return true if solve_next(rest)
-        @game.erase(*cell)
+        @game.erase(cell)
       end
 
       false
